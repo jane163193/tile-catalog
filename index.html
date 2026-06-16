@@ -20,7 +20,13 @@
         .cat-tabs .tab:hover, .cat-tabs .tab.active { background: #d4a574; color: #111; border-color: #d4a574; }
         .series-section { margin-bottom: 40px; }
         .series-title { padding: 16px 24px; font-size: 1.1em; font-weight: bold; max-width: 1200px; margin: 0 auto; border-radius: 8px 8px 0 0; }
-        .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding: 16px 24px; max-width: 1200px; margin: 0 auto; }
+        .filter-bar { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; padding: 10px 24px; max-width: 1200px; margin: 0 auto; }
+        .filter-bar .pill { padding: 6px 14px; border-radius: 16px; border: 1px solid #555; background: #222; color: #ccc; font-size: 0.8em; cursor: pointer; transition: all 0.15s; }
+        .filter-bar .pill:hover { border-color: #888; }
+        .filter-bar .pill.active { background: #d4a574; color: #111; border-color: #d4a574; }
+        .spec-group { }
+        .spec-group.hidden { display: none; }
+        .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding: 12px 24px; max-width: 1200px; margin: 0 auto; }
         .product-card { background: white; border-radius: 8px; overflow: hidden; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
         .product-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
         .product-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
@@ -40,7 +46,7 @@
         .lightbox .lb-nav.prev { left: 5px; }
         .lightbox .lb-nav.next { right: 5px; }
         @media (max-width: 900px) { .product-grid { grid-template-columns: repeat(3, 1fr); } }
-        @media (max-width: 600px) { .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 10px 16px; } .top-nav { flex-direction: column; } .header h1 { font-size: 1.3em; } }
+        @media (max-width: 600px) { .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 10px 16px; } .top-nav { flex-direction: column; } .header h1 { font-size: 1.3em; } .filter-bar { padding: 8px 16px; } .filter-bar .pill { padding: 5px 10px; font-size: 0.75em; } }
     </style>
 </head>
 <body>
@@ -72,6 +78,14 @@
 <div class="series-title" id="CARP" style="background: linear-gradient(135deg, #2a1a2a, #2a2a2a); color: #da70d6; border-bottom: 2px solid #da70d6;">
     GẠCH THẢM CAO CẤP — 49 mẫu
 </div>
+<div class="filter-bar" id="filter-CARP">
+    <button class="pill active" data-series="CARP" data-spec="-1" onclick="filterSpec(this)">Tất cả</button>
+    <button class="pill" data-series="CARP" data-spec="0" onclick="filterSpec(this)">600x1200</button>
+    <button class="pill" data-series="CARP" data-spec="1" onclick="filterSpec(this)">720x900-custom</button>
+    <button class="pill" data-series="CARP" data-spec="2" onclick="filterSpec(this)">720x900-stock</button>
+    <button class="pill" data-series="CARP" data-spec="3" onclick="filterSpec(this)">750x1350</button>
+</div>
+<div class="spec-group" data-series="CARP" data-spec="0">
 <div class="product-grid">
 <div class="product-card" onclick="openLightbox(1)"><img src="carpet-tiles/600x1200/600x1200-001.jpg" alt="CARP0001"><div class="card-info"><div class="card-code" style="color:#da70d6">CARP0001</div><div class="card-size">600x1200</div></div></div>
 <div class="product-card" onclick="openLightbox(2)"><img src="carpet-tiles/600x1200/600x1200-002.jpg" alt="CARP0002"><div class="card-info"><div class="card-code" style="color:#da70d6">CARP0002</div><div class="card-size">600x1200</div></div></div>
@@ -83,6 +97,10 @@
 <div class="product-card" onclick="openLightbox(8)"><img src="carpet-tiles/600x1200/600x1200-008.jpg" alt="CARP0008"><div class="card-info"><div class="card-code" style="color:#da70d6">CARP0008</div><div class="card-size">600x1200</div></div></div>
 <div class="product-card" onclick="openLightbox(9)"><img src="carpet-tiles/600x1200/600x1200-009.jpg" alt="CARP0009"><div class="card-info"><div class="card-code" style="color:#da70d6">CARP0009</div><div class="card-size">600x1200</div></div></div>
 <div class="product-card" onclick="openLightbox(10)"><img src="carpet-tiles/600x1200/600x1200-010.jpg" alt="CARP0010"><div class="card-info"><div class="card-code" style="color:#da70d6">CARP0010</div><div class="card-size">600x1200</div></div></div>
+</div>
+</div>
+<div class="spec-group" data-series="CARP" data-spec="1">
+<div class="product-grid">
 <div class="product-card" onclick="openLightbox(11)"><img src="carpet-tiles/720x900-custom/720x900-custom-001.jpg" alt="CARP0011"><div class="card-info"><div class="card-code" style="color:#da70d6">CARP0011</div><div class="card-size">720x900-custom</div></div></div>
 <div class="product-card" onclick="openLightbox(12)"><img src="carpet-tiles/720x900-custom/720x900-custom-002.jpg" alt="CARP0012"><div class="card-info"><div class="card-code" style="color:#da70d6">CARP0012</div><div class="card-size">720x900-custom</div></div></div>
 <div class="product-card" onclick="openLightbox(13)"><img src="carpet-tiles/720x900-custom/720x900-custom-003.jpg" alt="CARP0013"><div class="card-info"><div class="card-code" style="color:#da70d6">CARP0013</div><div class="card-size">720x900-custom</div></div></div>
@@ -95,6 +113,10 @@
 <div class="product-card" onclick="openLightbox(20)"><img src="carpet-tiles/720x900-custom/720x900-custom-010.jpg" alt="CARP0020"><div class="card-info"><div class="card-code" style="color:#da70d6">CARP0020</div><div class="card-size">720x900-custom</div></div></div>
 <div class="product-card" onclick="openLightbox(21)"><img src="carpet-tiles/720x900-custom/720x900-custom-011.jpg" alt="CARP0021"><div class="card-info"><div class="card-code" style="color:#da70d6">CARP0021</div><div class="card-size">720x900-custom</div></div></div>
 <div class="product-card" onclick="openLightbox(22)"><img src="carpet-tiles/720x900-custom/720x900-custom-012.jpg" alt="CARP0022"><div class="card-info"><div class="card-code" style="color:#da70d6">CARP0022</div><div class="card-size">720x900-custom</div></div></div>
+</div>
+</div>
+<div class="spec-group" data-series="CARP" data-spec="2">
+<div class="product-grid">
 <div class="product-card" onclick="openLightbox(23)"><img src="carpet-tiles/720x900-stock/720x900-stock-001.jpg" alt="CARP0023"><div class="card-info"><div class="card-code" style="color:#da70d6">CARP0023</div><div class="card-size">720x900-stock</div></div></div>
 <div class="product-card" onclick="openLightbox(24)"><img src="carpet-tiles/720x900-stock/720x900-stock-002.jpg" alt="CARP0024"><div class="card-info"><div class="card-code" style="color:#da70d6">CARP0024</div><div class="card-size">720x900-stock</div></div></div>
 <div class="product-card" onclick="openLightbox(25)"><img src="carpet-tiles/720x900-stock/720x900-stock-003.jpg" alt="CARP0025"><div class="card-info"><div class="card-code" style="color:#da70d6">CARP0025</div><div class="card-size">720x900-stock</div></div></div>
@@ -111,6 +133,10 @@
 <div class="product-card" onclick="openLightbox(36)"><img src="carpet-tiles/720x900-stock/720x900-stock-014.jpg" alt="CARP0036"><div class="card-info"><div class="card-code" style="color:#da70d6">CARP0036</div><div class="card-size">720x900-stock</div></div></div>
 <div class="product-card" onclick="openLightbox(37)"><img src="carpet-tiles/720x900-stock/720x900-stock-015.jpg" alt="CARP0037"><div class="card-info"><div class="card-code" style="color:#da70d6">CARP0037</div><div class="card-size">720x900-stock</div></div></div>
 <div class="product-card" onclick="openLightbox(38)"><img src="carpet-tiles/720x900-stock/720x900-stock-016.jpg" alt="CARP0038"><div class="card-info"><div class="card-code" style="color:#da70d6">CARP0038</div><div class="card-size">720x900-stock</div></div></div>
+</div>
+</div>
+<div class="spec-group" data-series="CARP" data-spec="3">
+<div class="product-grid">
 <div class="product-card" onclick="openLightbox(39)"><img src="carpet-tiles/750x1350/750x1350-001.jpg" alt="CARP0039"><div class="card-info"><div class="card-code" style="color:#da70d6">CARP0039</div><div class="card-size">750x1350</div></div></div>
 <div class="product-card" onclick="openLightbox(40)"><img src="carpet-tiles/750x1350/750x1350-002.jpg" alt="CARP0040"><div class="card-info"><div class="card-code" style="color:#da70d6">CARP0040</div><div class="card-size">750x1350</div></div></div>
 <div class="product-card" onclick="openLightbox(41)"><img src="carpet-tiles/750x1350/750x1350-003.jpg" alt="CARP0041"><div class="card-info"><div class="card-code" style="color:#da70d6">CARP0041</div><div class="card-size">750x1350</div></div></div>
@@ -124,11 +150,17 @@
 <div class="product-card" onclick="openLightbox(49)"><img src="carpet-tiles/750x1350/750x1350-011.jpg" alt="CARP0049"><div class="card-info"><div class="card-code" style="color:#da70d6">CARP0049</div><div class="card-size">750x1350</div></div></div>
 </div>
 </div>
+</div>
 
 <div class="series-section">
 <div class="series-title" id="CAST" style="background: linear-gradient(135deg, #1a1a1a, #2a2a2a); color: #8B7355; border-bottom: 2px solid #8B7355;">
     GẠCH ĐÁ CỔ TỪ LÂU ĐÀI — 8 mẫu
 </div>
+<div class="filter-bar" id="filter-CAST">
+    <button class="pill active" data-series="CAST" data-spec="-1" onclick="filterSpec(this)">Tất cả</button>
+    <button class="pill" data-series="CAST" data-spec="0" onclick="filterSpec(this)">600x1200</button>
+</div>
+<div class="spec-group" data-series="CAST" data-spec="0">
 <div class="product-grid">
 <div class="product-card" onclick="openLightbox(50)"><img src="castle-stone/600x1200/600x1200-001.jpg" alt="CAST0050"><div class="card-info"><div class="card-code" style="color:#8B7355">CAST0050</div><div class="card-size">600x1200</div></div></div>
 <div class="product-card" onclick="openLightbox(51)"><img src="castle-stone/600x1200/600x1200-002.jpg" alt="CAST0051"><div class="card-info"><div class="card-code" style="color:#8B7355">CAST0051</div><div class="card-size">600x1200</div></div></div>
@@ -140,11 +172,19 @@
 <div class="product-card" onclick="openLightbox(57)"><img src="castle-stone/600x1200/600x1200-008.jpg" alt="CAST0057"><div class="card-info"><div class="card-code" style="color:#8B7355">CAST0057</div><div class="card-size">600x1200</div></div></div>
 </div>
 </div>
+</div>
 
 <div class="series-section">
 <div class="series-title" id="GLAZ" style="background: linear-gradient(135deg, #1a1a2e, #2a2a2a); color: #e6c84b; border-bottom: 2px solid #e6c84b;">
     GẠCH ĐÁNH BÓNG MEN — 53 mẫu
 </div>
+<div class="filter-bar" id="filter-GLAZ">
+    <button class="pill active" data-series="GLAZ" data-spec="-1" onclick="filterSpec(this)">Tất cả</button>
+    <button class="pill" data-series="GLAZ" data-spec="0" onclick="filterSpec(this)">30x60-40x80gold</button>
+    <button class="pill" data-series="GLAZ" data-spec="1" onclick="filterSpec(this)">30x60-40x80plain</button>
+    <button class="pill" data-series="GLAZ" data-spec="2" onclick="filterSpec(this)">600x1200</button>
+</div>
+<div class="spec-group" data-series="GLAZ" data-spec="0">
 <div class="product-grid">
 <div class="product-card" onclick="openLightbox(58)"><img src="glaze-series/30x60-40x80gold/30x60-40x80gold-001.jpg" alt="GLAZ0058"><div class="card-info"><div class="card-code" style="color:#e6c84b">GLAZ0058</div><div class="card-size">30x60-40x80gold</div></div></div>
 <div class="product-card" onclick="openLightbox(59)"><img src="glaze-series/30x60-40x80gold/30x60-40x80gold-002.jpg" alt="GLAZ0059"><div class="card-info"><div class="card-code" style="color:#e6c84b">GLAZ0059</div><div class="card-size">30x60-40x80gold</div></div></div>
@@ -166,6 +206,10 @@
 <div class="product-card" onclick="openLightbox(75)"><img src="glaze-series/30x60-40x80gold/30x60-40x80gold-018.jpg" alt="GLAZ0075"><div class="card-info"><div class="card-code" style="color:#e6c84b">GLAZ0075</div><div class="card-size">30x60-40x80gold</div></div></div>
 <div class="product-card" onclick="openLightbox(76)"><img src="glaze-series/30x60-40x80gold/30x60-40x80gold-019.jpg" alt="GLAZ0076"><div class="card-info"><div class="card-code" style="color:#e6c84b">GLAZ0076</div><div class="card-size">30x60-40x80gold</div></div></div>
 <div class="product-card" onclick="openLightbox(77)"><img src="glaze-series/30x60-40x80gold/30x60-40x80gold-020.jpg" alt="GLAZ0077"><div class="card-info"><div class="card-code" style="color:#e6c84b">GLAZ0077</div><div class="card-size">30x60-40x80gold</div></div></div>
+</div>
+</div>
+<div class="spec-group" data-series="GLAZ" data-spec="1">
+<div class="product-grid">
 <div class="product-card" onclick="openLightbox(78)"><img src="glaze-series/30x60-40x80plain/30x60-40x80plain-001.jpg" alt="GLAZ0078"><div class="card-info"><div class="card-code" style="color:#e6c84b">GLAZ0078</div><div class="card-size">30x60-40x80plain</div></div></div>
 <div class="product-card" onclick="openLightbox(79)"><img src="glaze-series/30x60-40x80plain/30x60-40x80plain-002.jpg" alt="GLAZ0079"><div class="card-info"><div class="card-code" style="color:#e6c84b">GLAZ0079</div><div class="card-size">30x60-40x80plain</div></div></div>
 <div class="product-card" onclick="openLightbox(80)"><img src="glaze-series/30x60-40x80plain/30x60-40x80plain-003.jpg" alt="GLAZ0080"><div class="card-info"><div class="card-code" style="color:#e6c84b">GLAZ0080</div><div class="card-size">30x60-40x80plain</div></div></div>
@@ -191,6 +235,10 @@
 <div class="product-card" onclick="openLightbox(100)"><img src="glaze-series/30x60-40x80plain/30x60-40x80plain-023.jpg" alt="GLAZ0100"><div class="card-info"><div class="card-code" style="color:#e6c84b">GLAZ0100</div><div class="card-size">30x60-40x80plain</div></div></div>
 <div class="product-card" onclick="openLightbox(101)"><img src="glaze-series/30x60-40x80plain/30x60-40x80plain-024.jpg" alt="GLAZ0101"><div class="card-info"><div class="card-code" style="color:#e6c84b">GLAZ0101</div><div class="card-size">30x60-40x80plain</div></div></div>
 <div class="product-card" onclick="openLightbox(102)"><img src="glaze-series/30x60-40x80plain/30x60-40x80plain-025.jpg" alt="GLAZ0102"><div class="card-info"><div class="card-code" style="color:#e6c84b">GLAZ0102</div><div class="card-size">30x60-40x80plain</div></div></div>
+</div>
+</div>
+<div class="spec-group" data-series="GLAZ" data-spec="2">
+<div class="product-grid">
 <div class="product-card" onclick="openLightbox(103)"><img src="glaze-series/600x1200/600x1200-001.jpg" alt="GLAZ0103"><div class="card-info"><div class="card-code" style="color:#e6c84b">GLAZ0103</div><div class="card-size">600x1200</div></div></div>
 <div class="product-card" onclick="openLightbox(104)"><img src="glaze-series/600x1200/600x1200-002.jpg" alt="GLAZ0104"><div class="card-info"><div class="card-code" style="color:#e6c84b">GLAZ0104</div><div class="card-size">600x1200</div></div></div>
 <div class="product-card" onclick="openLightbox(105)"><img src="glaze-series/600x1200/600x1200-003.jpg" alt="GLAZ0105"><div class="card-info"><div class="card-code" style="color:#e6c84b">GLAZ0105</div><div class="card-size">600x1200</div></div></div>
@@ -201,11 +249,21 @@
 <div class="product-card" onclick="openLightbox(110)"><img src="glaze-series/600x1200/600x1200-008.jpg" alt="GLAZ0110"><div class="card-info"><div class="card-code" style="color:#e6c84b">GLAZ0110</div><div class="card-size">600x1200</div></div></div>
 </div>
 </div>
+</div>
 
 <div class="series-section">
 <div class="series-title" id="MABL" style="background: linear-gradient(135deg, #1a1a2a, #2a2a2a); color: #87ceeb; border-bottom: 2px solid #87ceeb;">
     ĐÁ CẨM THẠCH BÓNG — 101 mẫu
 </div>
+<div class="filter-bar" id="filter-MABL">
+    <button class="pill active" data-series="MABL" data-spec="-1" onclick="filterSpec(this)">Tất cả</button>
+    <button class="pill" data-series="MABL" data-spec="0" onclick="filterSpec(this)">1000x1000ga-ch-bo-ng</button>
+    <button class="pill" data-series="MABL" data-spec="1" onclick="filterSpec(this)">300-600ga-ch-bo-ng</button>
+    <button class="pill" data-series="MABL" data-spec="2" onclick="filterSpec(this)">400x800ga-ch-bo-ng</button>
+    <button class="pill" data-series="MABL" data-spec="3" onclick="filterSpec(this)">600-600ga-ch-mo</button>
+    <button class="pill" data-series="MABL" data-spec="4" onclick="filterSpec(this)">800x800ga-ch-bo-ng</button>
+</div>
+<div class="spec-group" data-series="MABL" data-spec="0">
 <div class="product-grid">
 <div class="product-card" onclick="openLightbox(111)"><img src="marble-tiles/1000x1000ga-ch-bo-ng/1000x1000ga-ch-bo-ng-001.jpg" alt="MABL0111"><div class="card-info"><div class="card-code" style="color:#87ceeb">MABL0111</div><div class="card-size">1000x1000ga-ch-bo-ng</div></div></div>
 <div class="product-card" onclick="openLightbox(112)"><img src="marble-tiles/1000x1000ga-ch-bo-ng/1000x1000ga-ch-bo-ng-002.jpg" alt="MABL0112"><div class="card-info"><div class="card-code" style="color:#87ceeb">MABL0112</div><div class="card-size">1000x1000ga-ch-bo-ng</div></div></div>
@@ -229,6 +287,10 @@
 <div class="product-card" onclick="openLightbox(130)"><img src="marble-tiles/1000x1000ga-ch-bo-ng/1000x1000ga-ch-bo-ng-020.jpg" alt="MABL0130"><div class="card-info"><div class="card-code" style="color:#87ceeb">MABL0130</div><div class="card-size">1000x1000ga-ch-bo-ng</div></div></div>
 <div class="product-card" onclick="openLightbox(131)"><img src="marble-tiles/1000x1000ga-ch-bo-ng/1000x1000ga-ch-bo-ng-021.jpg" alt="MABL0131"><div class="card-info"><div class="card-code" style="color:#87ceeb">MABL0131</div><div class="card-size">1000x1000ga-ch-bo-ng</div></div></div>
 <div class="product-card" onclick="openLightbox(132)"><img src="marble-tiles/1000x1000ga-ch-bo-ng/1000x1000ga-ch-bo-ng-022.jpg" alt="MABL0132"><div class="card-info"><div class="card-code" style="color:#87ceeb">MABL0132</div><div class="card-size">1000x1000ga-ch-bo-ng</div></div></div>
+</div>
+</div>
+<div class="spec-group" data-series="MABL" data-spec="1">
+<div class="product-grid">
 <div class="product-card" onclick="openLightbox(133)"><img src="marble-tiles/300-600ga-ch-bo-ng/300-600ga-ch-bo-ng-001.jpg" alt="MABL0133"><div class="card-info"><div class="card-code" style="color:#87ceeb">MABL0133</div><div class="card-size">300-600ga-ch-bo-ng</div></div></div>
 <div class="product-card" onclick="openLightbox(134)"><img src="marble-tiles/300-600ga-ch-bo-ng/300-600ga-ch-bo-ng-002.jpg" alt="MABL0134"><div class="card-info"><div class="card-code" style="color:#87ceeb">MABL0134</div><div class="card-size">300-600ga-ch-bo-ng</div></div></div>
 <div class="product-card" onclick="openLightbox(135)"><img src="marble-tiles/300-600ga-ch-bo-ng/300-600ga-ch-bo-ng-003.jpg" alt="MABL0135"><div class="card-info"><div class="card-code" style="color:#87ceeb">MABL0135</div><div class="card-size">300-600ga-ch-bo-ng</div></div></div>
@@ -259,6 +321,10 @@
 <div class="product-card" onclick="openLightbox(160)"><img src="marble-tiles/300-600ga-ch-bo-ng/300-600ga-ch-bo-ng-028.jpg" alt="MABL0160"><div class="card-info"><div class="card-code" style="color:#87ceeb">MABL0160</div><div class="card-size">300-600ga-ch-bo-ng</div></div></div>
 <div class="product-card" onclick="openLightbox(161)"><img src="marble-tiles/300-600ga-ch-bo-ng/300-600ga-ch-bo-ng-029.jpg" alt="MABL0161"><div class="card-info"><div class="card-code" style="color:#87ceeb">MABL0161</div><div class="card-size">300-600ga-ch-bo-ng</div></div></div>
 <div class="product-card" onclick="openLightbox(162)"><img src="marble-tiles/300-600ga-ch-bo-ng/300-600ga-ch-bo-ng-030.jpg" alt="MABL0162"><div class="card-info"><div class="card-code" style="color:#87ceeb">MABL0162</div><div class="card-size">300-600ga-ch-bo-ng</div></div></div>
+</div>
+</div>
+<div class="spec-group" data-series="MABL" data-spec="2">
+<div class="product-grid">
 <div class="product-card" onclick="openLightbox(163)"><img src="marble-tiles/400x800ga-ch-bo-ng/400x800ga-ch-bo-ng-001.jpg" alt="MABL0163"><div class="card-info"><div class="card-code" style="color:#87ceeb">MABL0163</div><div class="card-size">400x800ga-ch-bo-ng</div></div></div>
 <div class="product-card" onclick="openLightbox(164)"><img src="marble-tiles/400x800ga-ch-bo-ng/400x800ga-ch-bo-ng-002.jpg" alt="MABL0164"><div class="card-info"><div class="card-code" style="color:#87ceeb">MABL0164</div><div class="card-size">400x800ga-ch-bo-ng</div></div></div>
 <div class="product-card" onclick="openLightbox(165)"><img src="marble-tiles/400x800ga-ch-bo-ng/400x800ga-ch-bo-ng-003.jpg" alt="MABL0165"><div class="card-info"><div class="card-code" style="color:#87ceeb">MABL0165</div><div class="card-size">400x800ga-ch-bo-ng</div></div></div>
@@ -282,6 +348,10 @@
 <div class="product-card" onclick="openLightbox(183)"><img src="marble-tiles/400x800ga-ch-bo-ng/400x800ga-ch-bo-ng-021.jpg" alt="MABL0183"><div class="card-info"><div class="card-code" style="color:#87ceeb">MABL0183</div><div class="card-size">400x800ga-ch-bo-ng</div></div></div>
 <div class="product-card" onclick="openLightbox(184)"><img src="marble-tiles/400x800ga-ch-bo-ng/400x800ga-ch-bo-ng-022.jpg" alt="MABL0184"><div class="card-info"><div class="card-code" style="color:#87ceeb">MABL0184</div><div class="card-size">400x800ga-ch-bo-ng</div></div></div>
 <div class="product-card" onclick="openLightbox(185)"><img src="marble-tiles/400x800ga-ch-bo-ng/400x800ga-ch-bo-ng-023.jpg" alt="MABL0185"><div class="card-info"><div class="card-code" style="color:#87ceeb">MABL0185</div><div class="card-size">400x800ga-ch-bo-ng</div></div></div>
+</div>
+</div>
+<div class="spec-group" data-series="MABL" data-spec="3">
+<div class="product-grid">
 <div class="product-card" onclick="openLightbox(186)"><img src="marble-tiles/600-600ga-ch-mo/600-600ga-ch-mo-001.jpg" alt="MABL0186"><div class="card-info"><div class="card-code" style="color:#87ceeb">MABL0186</div><div class="card-size">600-600ga-ch-mo</div></div></div>
 <div class="product-card" onclick="openLightbox(187)"><img src="marble-tiles/600-600ga-ch-mo/600-600ga-ch-mo-002.jpg" alt="MABL0187"><div class="card-info"><div class="card-code" style="color:#87ceeb">MABL0187</div><div class="card-size">600-600ga-ch-mo</div></div></div>
 <div class="product-card" onclick="openLightbox(188)"><img src="marble-tiles/600-600ga-ch-mo/600-600ga-ch-mo-003.jpg" alt="MABL0188"><div class="card-info"><div class="card-code" style="color:#87ceeb">MABL0188</div><div class="card-size">600-600ga-ch-mo</div></div></div>
@@ -297,6 +367,10 @@
 <div class="product-card" onclick="openLightbox(198)"><img src="marble-tiles/600-600ga-ch-mo/600-600ga-ch-mo-013.jpg" alt="MABL0198"><div class="card-info"><div class="card-code" style="color:#87ceeb">MABL0198</div><div class="card-size">600-600ga-ch-mo</div></div></div>
 <div class="product-card" onclick="openLightbox(199)"><img src="marble-tiles/600-600ga-ch-mo/600-600ga-ch-mo-014.jpg" alt="MABL0199"><div class="card-info"><div class="card-code" style="color:#87ceeb">MABL0199</div><div class="card-size">600-600ga-ch-mo</div></div></div>
 <div class="product-card" onclick="openLightbox(200)"><img src="marble-tiles/600-600ga-ch-mo/600-600ga-ch-mo-015.jpg" alt="MABL0200"><div class="card-info"><div class="card-code" style="color:#87ceeb">MABL0200</div><div class="card-size">600-600ga-ch-mo</div></div></div>
+</div>
+</div>
+<div class="spec-group" data-series="MABL" data-spec="4">
+<div class="product-grid">
 <div class="product-card" onclick="openLightbox(201)"><img src="marble-tiles/800x800ga-ch-bo-ng/800x800ga-ch-bo-ng-001.jpg" alt="MABL0201"><div class="card-info"><div class="card-code" style="color:#87ceeb">MABL0201</div><div class="card-size">800x800ga-ch-bo-ng</div></div></div>
 <div class="product-card" onclick="openLightbox(202)"><img src="marble-tiles/800x800ga-ch-bo-ng/800x800ga-ch-bo-ng-002.jpg" alt="MABL0202"><div class="card-info"><div class="card-code" style="color:#87ceeb">MABL0202</div><div class="card-size">800x800ga-ch-bo-ng</div></div></div>
 <div class="product-card" onclick="openLightbox(203)"><img src="marble-tiles/800x800ga-ch-bo-ng/800x800ga-ch-bo-ng-003.jpg" alt="MABL0203"><div class="card-info"><div class="card-code" style="color:#87ceeb">MABL0203</div><div class="card-size">800x800ga-ch-bo-ng</div></div></div>
@@ -310,11 +384,23 @@
 <div class="product-card" onclick="openLightbox(211)"><img src="marble-tiles/800x800ga-ch-bo-ng/800x800ga-ch-bo-ng-011.jpg" alt="MABL0211"><div class="card-info"><div class="card-code" style="color:#87ceeb">MABL0211</div><div class="card-size">800x800ga-ch-bo-ng</div></div></div>
 </div>
 </div>
+</div>
 
 <div class="series-section">
 <div class="series-title" id="STAI" style="background: linear-gradient(135deg, #1a2a1a, #2a2a2a); color: #6b8e23; border-bottom: 2px solid #6b8e23;">
     GẠCH LÁT CẦU THANG — 55 mẫu
 </div>
+<div class="filter-bar" id="filter-STAI">
+    <button class="pill active" data-series="STAI" data-spec="-1" onclick="filterSpec(this)">Tất cả</button>
+    <button class="pill" data-series="STAI" data-spec="0" onclick="filterSpec(this)">300x1200x15wood</button>
+    <button class="pill" data-series="STAI" data-spec="1" onclick="filterSpec(this)">470x1200x12gold</button>
+    <button class="pill" data-series="STAI" data-spec="2" onclick="filterSpec(this)">470x1200x12plain</button>
+    <button class="pill" data-series="STAI" data-spec="3" onclick="filterSpec(this)">470x1200x12wood</button>
+    <button class="pill" data-series="STAI" data-spec="4" onclick="filterSpec(this)">470x1200x15gold</button>
+    <button class="pill" data-series="STAI" data-spec="5" onclick="filterSpec(this)">470x1200x15plain</button>
+    <button class="pill" data-series="STAI" data-spec="6" onclick="filterSpec(this)">470x1200x18floor</button>
+</div>
+<div class="spec-group" data-series="STAI" data-spec="0">
 <div class="product-grid">
 <div class="product-card" onclick="openLightbox(212)"><img src="stair-tiles/300x1200x15wood/300x1200x15wood-001.jpg" alt="STAI0212"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0212</div><div class="card-size">300x1200x15wood</div></div></div>
 <div class="product-card" onclick="openLightbox(213)"><img src="stair-tiles/300x1200x15wood/300x1200x15wood-002.jpg" alt="STAI0213"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0213</div><div class="card-size">300x1200x15wood</div></div></div>
@@ -326,6 +412,10 @@
 <div class="product-card" onclick="openLightbox(219)"><img src="stair-tiles/300x1200x15wood/300x1200x15wood-008.jpg" alt="STAI0219"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0219</div><div class="card-size">300x1200x15wood</div></div></div>
 <div class="product-card" onclick="openLightbox(220)"><img src="stair-tiles/300x1200x15wood/300x1200x15wood-009.jpg" alt="STAI0220"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0220</div><div class="card-size">300x1200x15wood</div></div></div>
 <div class="product-card" onclick="openLightbox(221)"><img src="stair-tiles/300x1200x15wood/300x1200x15wood-010.jpg" alt="STAI0221"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0221</div><div class="card-size">300x1200x15wood</div></div></div>
+</div>
+</div>
+<div class="spec-group" data-series="STAI" data-spec="1">
+<div class="product-grid">
 <div class="product-card" onclick="openLightbox(222)"><img src="stair-tiles/470x1200x12gold/470x1200x12gold-001.jpg" alt="STAI0222"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0222</div><div class="card-size">470x1200x12gold</div></div></div>
 <div class="product-card" onclick="openLightbox(223)"><img src="stair-tiles/470x1200x12gold/470x1200x12gold-002.jpg" alt="STAI0223"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0223</div><div class="card-size">470x1200x12gold</div></div></div>
 <div class="product-card" onclick="openLightbox(224)"><img src="stair-tiles/470x1200x12gold/470x1200x12gold-003.jpg" alt="STAI0224"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0224</div><div class="card-size">470x1200x12gold</div></div></div>
@@ -336,10 +426,18 @@
 <div class="product-card" onclick="openLightbox(229)"><img src="stair-tiles/470x1200x12gold/470x1200x12gold-008.jpg" alt="STAI0229"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0229</div><div class="card-size">470x1200x12gold</div></div></div>
 <div class="product-card" onclick="openLightbox(230)"><img src="stair-tiles/470x1200x12gold/470x1200x12gold-009.jpg" alt="STAI0230"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0230</div><div class="card-size">470x1200x12gold</div></div></div>
 <div class="product-card" onclick="openLightbox(231)"><img src="stair-tiles/470x1200x12gold/470x1200x12gold-010.jpg" alt="STAI0231"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0231</div><div class="card-size">470x1200x12gold</div></div></div>
+</div>
+</div>
+<div class="spec-group" data-series="STAI" data-spec="2">
+<div class="product-grid">
 <div class="product-card" onclick="openLightbox(232)"><img src="stair-tiles/470x1200x12plain/470x1200x12plain-001.jpg" alt="STAI0232"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0232</div><div class="card-size">470x1200x12plain</div></div></div>
 <div class="product-card" onclick="openLightbox(233)"><img src="stair-tiles/470x1200x12plain/470x1200x12plain-002.jpg" alt="STAI0233"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0233</div><div class="card-size">470x1200x12plain</div></div></div>
 <div class="product-card" onclick="openLightbox(234)"><img src="stair-tiles/470x1200x12plain/470x1200x12plain-003.jpg" alt="STAI0234"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0234</div><div class="card-size">470x1200x12plain</div></div></div>
 <div class="product-card" onclick="openLightbox(235)"><img src="stair-tiles/470x1200x12plain/470x1200x12plain-004.jpg" alt="STAI0235"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0235</div><div class="card-size">470x1200x12plain</div></div></div>
+</div>
+</div>
+<div class="spec-group" data-series="STAI" data-spec="3">
+<div class="product-grid">
 <div class="product-card" onclick="openLightbox(236)"><img src="stair-tiles/470x1200x12wood/470x1200x12wood-001.jpg" alt="STAI0236"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0236</div><div class="card-size">470x1200x12wood</div></div></div>
 <div class="product-card" onclick="openLightbox(237)"><img src="stair-tiles/470x1200x12wood/470x1200x12wood-002.jpg" alt="STAI0237"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0237</div><div class="card-size">470x1200x12wood</div></div></div>
 <div class="product-card" onclick="openLightbox(238)"><img src="stair-tiles/470x1200x12wood/470x1200x12wood-003.jpg" alt="STAI0238"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0238</div><div class="card-size">470x1200x12wood</div></div></div>
@@ -348,6 +446,10 @@
 <div class="product-card" onclick="openLightbox(241)"><img src="stair-tiles/470x1200x12wood/470x1200x12wood-006.jpg" alt="STAI0241"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0241</div><div class="card-size">470x1200x12wood</div></div></div>
 <div class="product-card" onclick="openLightbox(242)"><img src="stair-tiles/470x1200x12wood/470x1200x12wood-007.jpg" alt="STAI0242"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0242</div><div class="card-size">470x1200x12wood</div></div></div>
 <div class="product-card" onclick="openLightbox(243)"><img src="stair-tiles/470x1200x12wood/470x1200x12wood-008.jpg" alt="STAI0243"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0243</div><div class="card-size">470x1200x12wood</div></div></div>
+</div>
+</div>
+<div class="spec-group" data-series="STAI" data-spec="4">
+<div class="product-grid">
 <div class="product-card" onclick="openLightbox(244)"><img src="stair-tiles/470x1200x15gold/470x1200x15gold-001.jpg" alt="STAI0244"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0244</div><div class="card-size">470x1200x15gold</div></div></div>
 <div class="product-card" onclick="openLightbox(245)"><img src="stair-tiles/470x1200x15gold/470x1200x15gold-002.jpg" alt="STAI0245"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0245</div><div class="card-size">470x1200x15gold</div></div></div>
 <div class="product-card" onclick="openLightbox(246)"><img src="stair-tiles/470x1200x15gold/470x1200x15gold-003.jpg" alt="STAI0246"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0246</div><div class="card-size">470x1200x15gold</div></div></div>
@@ -355,6 +457,10 @@
 <div class="product-card" onclick="openLightbox(248)"><img src="stair-tiles/470x1200x15gold/470x1200x15gold-005.jpg" alt="STAI0248"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0248</div><div class="card-size">470x1200x15gold</div></div></div>
 <div class="product-card" onclick="openLightbox(249)"><img src="stair-tiles/470x1200x15gold/470x1200x15gold-006.jpg" alt="STAI0249"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0249</div><div class="card-size">470x1200x15gold</div></div></div>
 <div class="product-card" onclick="openLightbox(250)"><img src="stair-tiles/470x1200x15gold/470x1200x15gold-007.jpg" alt="STAI0250"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0250</div><div class="card-size">470x1200x15gold</div></div></div>
+</div>
+</div>
+<div class="spec-group" data-series="STAI" data-spec="5">
+<div class="product-grid">
 <div class="product-card" onclick="openLightbox(251)"><img src="stair-tiles/470x1200x15plain/470x1200x15plain-001.jpg" alt="STAI0251"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0251</div><div class="card-size">470x1200x15plain</div></div></div>
 <div class="product-card" onclick="openLightbox(252)"><img src="stair-tiles/470x1200x15plain/470x1200x15plain-002.jpg" alt="STAI0252"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0252</div><div class="card-size">470x1200x15plain</div></div></div>
 <div class="product-card" onclick="openLightbox(253)"><img src="stair-tiles/470x1200x15plain/470x1200x15plain-003.jpg" alt="STAI0253"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0253</div><div class="card-size">470x1200x15plain</div></div></div>
@@ -365,6 +471,10 @@
 <div class="product-card" onclick="openLightbox(258)"><img src="stair-tiles/470x1200x15plain/470x1200x15plain-008.jpg" alt="STAI0258"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0258</div><div class="card-size">470x1200x15plain</div></div></div>
 <div class="product-card" onclick="openLightbox(259)"><img src="stair-tiles/470x1200x15plain/470x1200x15plain-009.jpg" alt="STAI0259"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0259</div><div class="card-size">470x1200x15plain</div></div></div>
 <div class="product-card" onclick="openLightbox(260)"><img src="stair-tiles/470x1200x15plain/470x1200x15plain-010.jpg" alt="STAI0260"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0260</div><div class="card-size">470x1200x15plain</div></div></div>
+</div>
+</div>
+<div class="spec-group" data-series="STAI" data-spec="6">
+<div class="product-grid">
 <div class="product-card" onclick="openLightbox(261)"><img src="stair-tiles/470x1200x18floor/470x1200x18floor-001.jpg" alt="STAI0261"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0261</div><div class="card-size">470x1200x18floor</div></div></div>
 <div class="product-card" onclick="openLightbox(262)"><img src="stair-tiles/470x1200x18floor/470x1200x18floor-002.jpg" alt="STAI0262"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0262</div><div class="card-size">470x1200x18floor</div></div></div>
 <div class="product-card" onclick="openLightbox(263)"><img src="stair-tiles/470x1200x18floor/470x1200x18floor-003.jpg" alt="STAI0263"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0263</div><div class="card-size">470x1200x18floor</div></div></div>
@@ -373,11 +483,26 @@
 <div class="product-card" onclick="openLightbox(266)"><img src="stair-tiles/470x1200x18floor/470x1200x18floor-006.jpg" alt="STAI0266"><div class="card-info"><div class="card-code" style="color:#6b8e23">STAI0266</div><div class="card-size">470x1200x18floor</div></div></div>
 </div>
 </div>
+</div>
 
 <div class="series-section">
 <div class="series-title" id="WOOD" style="background: linear-gradient(135deg, #2c1810, #2a2a2a); color: #d4a574; border-bottom: 2px solid #d4a574;">
     GẠCH GỖ VÂN GỖ — 624 mẫu
 </div>
+<div class="filter-bar" id="filter-WOOD">
+    <button class="pill active" data-series="WOOD" data-spec="-1" onclick="filterSpec(this)">Tất cả</button>
+    <button class="pill" data-series="WOOD" data-spec="0" onclick="filterSpec(this)">150x900-custom</button>
+    <button class="pill" data-series="WOOD" data-spec="1" onclick="filterSpec(this)">150x900-stock</button>
+    <button class="pill" data-series="WOOD" data-spec="2" onclick="filterSpec(this)">200x1000-custom</button>
+    <button class="pill" data-series="WOOD" data-spec="3" onclick="filterSpec(this)">200x1000-stock</button>
+    <button class="pill" data-series="WOOD" data-spec="4" onclick="filterSpec(this)">200x1200-custom</button>
+    <button class="pill" data-series="WOOD" data-spec="5" onclick="filterSpec(this)">200x1200-stock</button>
+    <button class="pill" data-series="WOOD" data-spec="6" onclick="filterSpec(this)">600x1200-stock</button>
+    <button class="pill" data-series="WOOD" data-spec="7" onclick="filterSpec(this)">750x1350-stock</button>
+    <button class="pill" data-series="WOOD" data-spec="8" onclick="filterSpec(this)">750x750-stock</button>
+    <button class="pill" data-series="WOOD" data-spec="9" onclick="filterSpec(this)">wood-deck</button>
+</div>
+<div class="spec-group" data-series="WOOD" data-spec="0">
 <div class="product-grid">
 <div class="product-card" onclick="openLightbox(267)"><img src="wood-tiles/150x900-custom/150x900-custom-001.jpg" alt="WOOD0267"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0267</div><div class="card-size">150x900-custom</div></div></div>
 <div class="product-card" onclick="openLightbox(268)"><img src="wood-tiles/150x900-custom/150x900-custom-002.jpg" alt="WOOD0268"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0268</div><div class="card-size">150x900-custom</div></div></div>
@@ -479,6 +604,10 @@
 <div class="product-card" onclick="openLightbox(364)"><img src="wood-tiles/150x900-custom/150x900-custom-098.jpg" alt="WOOD0364"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0364</div><div class="card-size">150x900-custom</div></div></div>
 <div class="product-card" onclick="openLightbox(365)"><img src="wood-tiles/150x900-custom/150x900-custom-099.jpg" alt="WOOD0365"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0365</div><div class="card-size">150x900-custom</div></div></div>
 <div class="product-card" onclick="openLightbox(366)"><img src="wood-tiles/150x900-custom/150x900-custom-100.jpg" alt="WOOD0366"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0366</div><div class="card-size">150x900-custom</div></div></div>
+</div>
+</div>
+<div class="spec-group" data-series="WOOD" data-spec="1">
+<div class="product-grid">
 <div class="product-card" onclick="openLightbox(367)"><img src="wood-tiles/150x900-stock/150x900-stock-001.jpg" alt="WOOD0367"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0367</div><div class="card-size">150x900-stock</div></div></div>
 <div class="product-card" onclick="openLightbox(368)"><img src="wood-tiles/150x900-stock/150x900-stock-002.jpg" alt="WOOD0368"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0368</div><div class="card-size">150x900-stock</div></div></div>
 <div class="product-card" onclick="openLightbox(369)"><img src="wood-tiles/150x900-stock/150x900-stock-003.jpg" alt="WOOD0369"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0369</div><div class="card-size">150x900-stock</div></div></div>
@@ -504,6 +633,10 @@
 <div class="product-card" onclick="openLightbox(389)"><img src="wood-tiles/150x900-stock/150x900-stock-023.jpg" alt="WOOD0389"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0389</div><div class="card-size">150x900-stock</div></div></div>
 <div class="product-card" onclick="openLightbox(390)"><img src="wood-tiles/150x900-stock/150x900-stock-024.jpg" alt="WOOD0390"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0390</div><div class="card-size">150x900-stock</div></div></div>
 <div class="product-card" onclick="openLightbox(391)"><img src="wood-tiles/150x900-stock/150x900-stock-025.jpg" alt="WOOD0391"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0391</div><div class="card-size">150x900-stock</div></div></div>
+</div>
+</div>
+<div class="spec-group" data-series="WOOD" data-spec="2">
+<div class="product-grid">
 <div class="product-card" onclick="openLightbox(392)"><img src="wood-tiles/200x1000-custom/200x1000-custom-001.jpg" alt="WOOD0392"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0392</div><div class="card-size">200x1000-custom</div></div></div>
 <div class="product-card" onclick="openLightbox(393)"><img src="wood-tiles/200x1000-custom/200x1000-custom-002.jpg" alt="WOOD0393"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0393</div><div class="card-size">200x1000-custom</div></div></div>
 <div class="product-card" onclick="openLightbox(394)"><img src="wood-tiles/200x1000-custom/200x1000-custom-003.jpg" alt="WOOD0394"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0394</div><div class="card-size">200x1000-custom</div></div></div>
@@ -763,6 +896,10 @@
 <div class="product-card" onclick="openLightbox(648)"><img src="wood-tiles/200x1000-custom/200x1000-custom-257.jpg" alt="WOOD0648"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0648</div><div class="card-size">200x1000-custom</div></div></div>
 <div class="product-card" onclick="openLightbox(649)"><img src="wood-tiles/200x1000-custom/200x1000-custom-258.jpg" alt="WOOD0649"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0649</div><div class="card-size">200x1000-custom</div></div></div>
 <div class="product-card" onclick="openLightbox(650)"><img src="wood-tiles/200x1000-custom/200x1000-custom-259.jpg" alt="WOOD0650"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0650</div><div class="card-size">200x1000-custom</div></div></div>
+</div>
+</div>
+<div class="spec-group" data-series="WOOD" data-spec="3">
+<div class="product-grid">
 <div class="product-card" onclick="openLightbox(651)"><img src="wood-tiles/200x1000-stock/200x1000-stock-001.jpg" alt="WOOD0651"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0651</div><div class="card-size">200x1000-stock</div></div></div>
 <div class="product-card" onclick="openLightbox(652)"><img src="wood-tiles/200x1000-stock/200x1000-stock-002.jpg" alt="WOOD0652"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0652</div><div class="card-size">200x1000-stock</div></div></div>
 <div class="product-card" onclick="openLightbox(653)"><img src="wood-tiles/200x1000-stock/200x1000-stock-003.jpg" alt="WOOD0653"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0653</div><div class="card-size">200x1000-stock</div></div></div>
@@ -796,6 +933,10 @@
 <div class="product-card" onclick="openLightbox(681)"><img src="wood-tiles/200x1000-stock/200x1000-stock-031.jpg" alt="WOOD0681"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0681</div><div class="card-size">200x1000-stock</div></div></div>
 <div class="product-card" onclick="openLightbox(682)"><img src="wood-tiles/200x1000-stock/200x1000-stock-032.jpg" alt="WOOD0682"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0682</div><div class="card-size">200x1000-stock</div></div></div>
 <div class="product-card" onclick="openLightbox(683)"><img src="wood-tiles/200x1000-stock/200x1000-stock-033.jpg" alt="WOOD0683"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0683</div><div class="card-size">200x1000-stock</div></div></div>
+</div>
+</div>
+<div class="spec-group" data-series="WOOD" data-spec="4">
+<div class="product-grid">
 <div class="product-card" onclick="openLightbox(684)"><img src="wood-tiles/200x1200-custom/200x1200-custom-001.jpg" alt="WOOD0684"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0684</div><div class="card-size">200x1200-custom</div></div></div>
 <div class="product-card" onclick="openLightbox(685)"><img src="wood-tiles/200x1200-custom/200x1200-custom-002.jpg" alt="WOOD0685"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0685</div><div class="card-size">200x1200-custom</div></div></div>
 <div class="product-card" onclick="openLightbox(686)"><img src="wood-tiles/200x1200-custom/200x1200-custom-003.jpg" alt="WOOD0686"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0686</div><div class="card-size">200x1200-custom</div></div></div>
@@ -922,6 +1063,10 @@
 <div class="product-card" onclick="openLightbox(807)"><img src="wood-tiles/200x1200-custom/200x1200-custom-124.jpg" alt="WOOD0807"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0807</div><div class="card-size">200x1200-custom</div></div></div>
 <div class="product-card" onclick="openLightbox(808)"><img src="wood-tiles/200x1200-custom/200x1200-custom-125.jpg" alt="WOOD0808"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0808</div><div class="card-size">200x1200-custom</div></div></div>
 <div class="product-card" onclick="openLightbox(809)"><img src="wood-tiles/200x1200-custom/200x1200-custom-126.jpg" alt="WOOD0809"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0809</div><div class="card-size">200x1200-custom</div></div></div>
+</div>
+</div>
+<div class="spec-group" data-series="WOOD" data-spec="5">
+<div class="product-grid">
 <div class="product-card" onclick="openLightbox(810)"><img src="wood-tiles/200x1200-stock/200x1200-stock-001.jpg" alt="WOOD0810"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0810</div><div class="card-size">200x1200-stock</div></div></div>
 <div class="product-card" onclick="openLightbox(811)"><img src="wood-tiles/200x1200-stock/200x1200-stock-002.jpg" alt="WOOD0811"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0811</div><div class="card-size">200x1200-stock</div></div></div>
 <div class="product-card" onclick="openLightbox(812)"><img src="wood-tiles/200x1200-stock/200x1200-stock-003.jpg" alt="WOOD0812"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0812</div><div class="card-size">200x1200-stock</div></div></div>
@@ -942,6 +1087,10 @@
 <div class="product-card" onclick="openLightbox(827)"><img src="wood-tiles/200x1200-stock/200x1200-stock-018.jpg" alt="WOOD0827"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0827</div><div class="card-size">200x1200-stock</div></div></div>
 <div class="product-card" onclick="openLightbox(828)"><img src="wood-tiles/200x1200-stock/200x1200-stock-019.jpg" alt="WOOD0828"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0828</div><div class="card-size">200x1200-stock</div></div></div>
 <div class="product-card" onclick="openLightbox(829)"><img src="wood-tiles/200x1200-stock/200x1200-stock-020.jpg" alt="WOOD0829"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0829</div><div class="card-size">200x1200-stock</div></div></div>
+</div>
+</div>
+<div class="spec-group" data-series="WOOD" data-spec="6">
+<div class="product-grid">
 <div class="product-card" onclick="openLightbox(830)"><img src="wood-tiles/600x1200-stock/600x1200-stock-001.jpg" alt="WOOD0830"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0830</div><div class="card-size">600x1200-stock</div></div></div>
 <div class="product-card" onclick="openLightbox(831)"><img src="wood-tiles/600x1200-stock/600x1200-stock-002.jpg" alt="WOOD0831"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0831</div><div class="card-size">600x1200-stock</div></div></div>
 <div class="product-card" onclick="openLightbox(832)"><img src="wood-tiles/600x1200-stock/600x1200-stock-003.jpg" alt="WOOD0832"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0832</div><div class="card-size">600x1200-stock</div></div></div>
@@ -965,6 +1114,10 @@
 <div class="product-card" onclick="openLightbox(850)"><img src="wood-tiles/600x1200-stock/600x1200-stock-021.jpg" alt="WOOD0850"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0850</div><div class="card-size">600x1200-stock</div></div></div>
 <div class="product-card" onclick="openLightbox(851)"><img src="wood-tiles/600x1200-stock/600x1200-stock-022.jpg" alt="WOOD0851"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0851</div><div class="card-size">600x1200-stock</div></div></div>
 <div class="product-card" onclick="openLightbox(852)"><img src="wood-tiles/600x1200-stock/600x1200-stock-023.jpg" alt="WOOD0852"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0852</div><div class="card-size">600x1200-stock</div></div></div>
+</div>
+</div>
+<div class="spec-group" data-series="WOOD" data-spec="7">
+<div class="product-grid">
 <div class="product-card" onclick="openLightbox(853)"><img src="wood-tiles/750x1350-stock/750x1350-stock-001.jpg" alt="WOOD0853"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0853</div><div class="card-size">750x1350-stock</div></div></div>
 <div class="product-card" onclick="openLightbox(854)"><img src="wood-tiles/750x1350-stock/750x1350-stock-002.jpg" alt="WOOD0854"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0854</div><div class="card-size">750x1350-stock</div></div></div>
 <div class="product-card" onclick="openLightbox(855)"><img src="wood-tiles/750x1350-stock/750x1350-stock-003.jpg" alt="WOOD0855"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0855</div><div class="card-size">750x1350-stock</div></div></div>
@@ -974,6 +1127,10 @@
 <div class="product-card" onclick="openLightbox(859)"><img src="wood-tiles/750x1350-stock/750x1350-stock-007.jpg" alt="WOOD0859"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0859</div><div class="card-size">750x1350-stock</div></div></div>
 <div class="product-card" onclick="openLightbox(860)"><img src="wood-tiles/750x1350-stock/750x1350-stock-008.jpg" alt="WOOD0860"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0860</div><div class="card-size">750x1350-stock</div></div></div>
 <div class="product-card" onclick="openLightbox(861)"><img src="wood-tiles/750x1350-stock/750x1350-stock-009.jpg" alt="WOOD0861"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0861</div><div class="card-size">750x1350-stock</div></div></div>
+</div>
+</div>
+<div class="spec-group" data-series="WOOD" data-spec="8">
+<div class="product-grid">
 <div class="product-card" onclick="openLightbox(862)"><img src="wood-tiles/750x750-stock/750x750-stock-001.jpg" alt="WOOD0862"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0862</div><div class="card-size">750x750-stock</div></div></div>
 <div class="product-card" onclick="openLightbox(863)"><img src="wood-tiles/750x750-stock/750x750-stock-002.jpg" alt="WOOD0863"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0863</div><div class="card-size">750x750-stock</div></div></div>
 <div class="product-card" onclick="openLightbox(864)"><img src="wood-tiles/750x750-stock/750x750-stock-003.jpg" alt="WOOD0864"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0864</div><div class="card-size">750x750-stock</div></div></div>
@@ -999,10 +1156,15 @@
 <div class="product-card" onclick="openLightbox(884)"><img src="wood-tiles/750x750-stock/750x750-stock-023.jpg" alt="WOOD0884"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0884</div><div class="card-size">750x750-stock</div></div></div>
 <div class="product-card" onclick="openLightbox(885)"><img src="wood-tiles/750x750-stock/750x750-stock-024.jpg" alt="WOOD0885"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0885</div><div class="card-size">750x750-stock</div></div></div>
 <div class="product-card" onclick="openLightbox(886)"><img src="wood-tiles/750x750-stock/750x750-stock-025.jpg" alt="WOOD0886"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0886</div><div class="card-size">750x750-stock</div></div></div>
+</div>
+</div>
+<div class="spec-group" data-series="WOOD" data-spec="9">
+<div class="product-grid">
 <div class="product-card" onclick="openLightbox(887)"><img src="wood-tiles/wood-deck/wood-deck-001.jpg" alt="WOOD0887"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0887</div><div class="card-size">wood-deck</div></div></div>
 <div class="product-card" onclick="openLightbox(888)"><img src="wood-tiles/wood-deck/wood-deck-002.jpg" alt="WOOD0888"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0888</div><div class="card-size">wood-deck</div></div></div>
 <div class="product-card" onclick="openLightbox(889)"><img src="wood-tiles/wood-deck/wood-deck-003.jpg" alt="WOOD0889"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0889</div><div class="card-size">wood-deck</div></div></div>
 <div class="product-card" onclick="openLightbox(890)"><img src="wood-tiles/wood-deck/wood-deck-004.jpg" alt="WOOD0890"><div class="card-info"><div class="card-code" style="color:#d4a574">WOOD0890</div><div class="card-size">wood-deck</div></div></div>
+</div>
 </div>
 </div>
 
@@ -1937,6 +2099,22 @@ document.addEventListener("keydown", function(e) {
     if (e.key === "ArrowRight") navigateLightbox(1);
 });
 document.addEventListener("click", function(e) { if (e.target.id === "lightbox") closeLightbox(); });
+function filterSpec(btn) {
+    var series = btn.getAttribute("data-series");
+    var specIdx = parseInt(btn.getAttribute("data-spec"));
+    var pills = document.querySelectorAll("#filter-" + series + " .pill");
+    pills.forEach(function(p) { p.classList.remove("active"); });
+    btn.classList.add("active");
+    var groups = document.querySelectorAll(".spec-group[data-series='" + series + "']");
+    groups.forEach(function(g) {
+        var gIdx = parseInt(g.getAttribute("data-spec"));
+        if (specIdx === -1 || gIdx === specIdx) {
+            g.classList.remove("hidden");
+        } else {
+            g.classList.add("hidden");
+        }
+    });
+}
 </script>
 </body>
 </html>
