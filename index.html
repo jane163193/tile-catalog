@@ -826,6 +826,15 @@ function loadMore(key) {
     specCards[key] = [];
     if (btn) btn.remove();
 }
+
+// Initialize: show first spec group for each series on page load
+document.addEventListener('DOMContentLoaded', function() {
+    var allSeries = ['CARP', 'CAST', 'GLAZ', 'MABL', 'STAI', 'WOOD'];
+    allSeries.forEach(function(s) {
+        var firstPill = document.querySelector('#filter-' + s + ' .pill');
+        if (firstPill) firstPill.click();
+    });
+});
 </script>
 </body>
 </html>
