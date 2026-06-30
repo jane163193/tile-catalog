@@ -2262,7 +2262,7 @@ function filterRegion(btn) {
 }
 function filterSpec(btn) {
     var series = btn.getAttribute("data-series");
-    var region = btn.getAttribute("data-region") || "none";
+    var region = btn.getAttribute("data-region");
     var specIdx = parseInt(btn.getAttribute("data-spec"));
     var filterBar = region === "guang-xi" 
         ? document.getElementById("filter-" + series + "-gx") 
@@ -2270,14 +2270,13 @@ function filterSpec(btn) {
     var pills = filterBar ? filterBar.querySelectorAll(".pill") : [];
     pills.forEach(function(p) { p.classList.remove("active"); });
     btn.classList.add("active");
-    var groups = document.querySelectorAll(
-        region === "none" 
-            ? ".spec-group[data-series='" + series + "']:not([data-region])"
-            : ".spec-group[data-series='" + series + "'][data-region='" + region + "']"
-    );
-    groups.forEach(function(g) {
-        var gIdx = parseInt(g.getAttribute("data-spec"));
-        if (specIdx === -1 || gIdx === specIdx) {
+    var allGroups = document.querySelectorAll(".spec-group[data-series='" + series + "']");
+    allGroups.forEach(function(g) {
+        var gRegion = g.getAttribute("data-region");
+        var gSpec = parseInt(g.getAttribute("data-spec"));
+        var regionMatch = (region === null && gRegion === null) || (region !== null && region === gRegion);
+        var specMatch = (specIdx === -1 || gSpec === specIdx);
+        if (regionMatch && specMatch) {
             g.classList.remove("hidden");
         } else {
             g.classList.add("hidden");
